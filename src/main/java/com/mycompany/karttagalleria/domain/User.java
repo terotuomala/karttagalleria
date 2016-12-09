@@ -1,6 +1,7 @@
 package com.mycompany.karttagalleria.domain;
 
-import java.util.List;
+import java.util.Set;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
@@ -15,6 +16,7 @@ public class User extends AbstractPersistable<Long>{
     
     @NotBlank
     @Length(min = 3, max = 20)
+    @Column(unique = true)
     private String username;
     
     @NotBlank
@@ -26,7 +28,7 @@ public class User extends AbstractPersistable<Long>{
     private String passwordConfirm;
     
     @NotBlank
-    private List<Role> roles;
+    private Set<Role> roles;
 
     /**
      * @return the username
@@ -73,14 +75,14 @@ public class User extends AbstractPersistable<Long>{
     /**
      * @return the roles
      */
-    public List<Role> getRoles() {
+    public Set<Role> getRoles() {
         return roles;
     }
 
     /**
      * @param roles the roles to set
      */
-    public void setRoles(List<Role> roles) {
+    public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
     
