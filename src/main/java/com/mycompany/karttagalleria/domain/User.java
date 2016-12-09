@@ -3,6 +3,7 @@ package com.mycompany.karttagalleria.domain;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.jpa.domain.AbstractPersistable;
@@ -28,6 +29,7 @@ public class User extends AbstractPersistable<Long>{
     private String passwordConfirm;
     
     @NotBlank
+    @ManyToMany
     private Set<Role> roles;
 
     /**
