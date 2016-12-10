@@ -1,25 +1,54 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html>
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>Karttagalleria</title>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"
-              th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"
-              rel="stylesheet" media="screen" />
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+        <link th:href="@{/css/main.css}" rel="stylesheet"/>
 
     </head>
     <body>
-        
-        <header th:replace="fragments/header :: header">
-            <p>header with links etc</p>
-        </header>
-        
-        <h1>Hello World!</h1>
-        
-        <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"
-        th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"
-        th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+
+        <header th:replace="fragments/header :: header"></header>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Kategoria 1
+                        <small>kaikki kategorian 1 karttasovellukset</small>
+                    </h1>
+                </div>
+            </div>
+
+            <div class="col-md-4 gallery-item">
+                <div class="gallery-img-wrapper">
+                    <img class="img-responsive" src="http://placehold.it/750x427?text=Tulossa" alt=""></img>
+                </div>
+                <a href="#"><h3>KarttasovellusX</h3></a>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio.</p>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Kategoria 2
+                        <small>kaikki kategorian 2 karttasovellukset</small>
+                    </h1>
+                </div>
+            </div>
+            
+            <div class="col-md-4 gallery-item">
+                <div class="gallery-img-wrapper">
+                    <img class="img-responsive" src="http://placehold.it/750x427?text=Tulossa" alt=""></img>
+                </div>
+                <a href="#"><h3>KarttasovellusX</h3></a>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio.</p>
+            </div>
+        </div>
+
+
+
+            <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </body>
 </html>
