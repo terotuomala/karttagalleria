@@ -1,27 +1,32 @@
 body {
     padding-top: 70px;
-		font-family: 'Open Sans', sans-serif;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/*Custom Thymeleaf styles*/
+.form-field-error {
+    color: red;
 }
 
 /*Custom Bootstrap styles*/
 .navbar-default {
-	background-color: #0C2745;
-	border-color: #E7E7E7;
+    background-color: #0C2745;
+    border-color: #E7E7E7;
 }
 /* title */
 .navbar-default .navbar-brand {
-	color: white;
+    color: white;
 }
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
-	color: #d9d9d9;
+    color: #d9d9d9;
 }
 /* link */
 .navbar-default .navbar-nav > li > a {
-	color: white;
+    color: white;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-	color: #d9d9d9;
+    color: #d9d9d9;
 }
 

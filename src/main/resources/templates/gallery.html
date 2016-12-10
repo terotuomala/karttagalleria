@@ -15,40 +15,23 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Kategoria 1
-                        <small>kaikki kategorian 1 karttasovellukset</small>
+                    <h1 class="page-header">YritysX
+                        <small>kaikki YritysX:n karttasovellukset</small>
                     </h1>
                 </div>
-            </div>
 
-            <div class="col-md-4 gallery-item">
-                <div class="gallery-img-wrapper">
-                    <img class="img-responsive" src="http://placehold.it/750x427?text=Tulossa" alt=""></img>
+                <div class="col-md-4 gallery-item" th:each="map : ${maps}">
+                    <div class="gallery-img-wrapper">
+                        <img class="img-responsive" src="http://placehold.it/750x427?text=Tulossa" alt=""></img>
+                    </div>
+                    <a th:href="${map.url}"><h3 th:text="${map.title}">title</h3></a>
+                    <p th:text="${map.description}"></p>
+                    <br/>
                 </div>
-                <a href="#"><h3>KarttasovellusX</h3></a>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio.</p>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">Kategoria 2
-                        <small>kaikki kategorian 2 karttasovellukset</small>
-                    </h1>
-                </div>
-            </div>
-            
-            <div class="col-md-4 gallery-item">
-                <div class="gallery-img-wrapper">
-                    <img class="img-responsive" src="http://placehold.it/750x427?text=Tulossa" alt=""></img>
-                </div>
-                <a href="#"><h3>KarttasovellusX</h3></a>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio.</p>
             </div>
         </div>
 
-
-
-            <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </body>
 </html>
