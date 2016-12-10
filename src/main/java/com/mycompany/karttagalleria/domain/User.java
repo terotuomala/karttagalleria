@@ -12,6 +12,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
  *
  * @author Tero Tuomala
  */
+
 @Entity
 public class User extends AbstractPersistable<Long>{
     
@@ -23,10 +24,6 @@ public class User extends AbstractPersistable<Long>{
     @NotBlank
     @Length(min = 10, max = 50)
     private String password;
-    
-    @NotBlank
-    @Length(min = 10, max = 50)
-    private String passwordConfirm;
     
     @NotBlank
     @ManyToMany
@@ -58,20 +55,6 @@ public class User extends AbstractPersistable<Long>{
      */
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    /**
-     * @return the passwordConfirm
-     */
-    public String getPasswordConfirm() {
-        return passwordConfirm;
-    }
-
-    /**
-     * @param passwordConfirm the passwordConfirm to set
-     */
-    public void setPasswordConfirm(String passwordConfirm) {
-        this.passwordConfirm = passwordConfirm;
     }
 
     /**

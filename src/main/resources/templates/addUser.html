@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Karttagalleria</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+        <link th:href="@{/css/main.css}" rel="stylesheet"/>
+
+    </head>
+    <body>
+
+        <header th:replace="fragments/header :: header"></header>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Lisää uusi käyttäjä</h1>
+                </div>
+            </div>
+
+            <form class="form-horizontal" action="#" th:action="@{/addUser}" th:object="${user}" method="POST">
+                <div class="form-group">
+                    <label for="username" class="col-sm-2 control-label">Käyttäjätunnus:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="username" th:field="*{username}"></input>
+                        <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}" th:errorclass="form-field-error">Username error</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="col-sm-2 control-label">Salasana:</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="category" th:field="*{password}"></input>
+                        <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" th:errorclass="form-field-error">Password error</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="roles" class="col-sm-2 control-label">Rooli(t):</label>
+                    <div class="col-sm-10">
+                        <div class="checkbox" th:each="role : ${roles}">
+                            <label>
+                                <input type="checkbox" th:field="*{roles}" th:value="${role.name}" /><span th:text="${role.name}">name</span>
+                                <span th:if="${#fields.hasErrors('roles')}" th:errors="*{roles}" th:errorclass="form-field-error">Roles error</span>
+                            </label>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-success">Lisää</button>
+                        <button type="reset" class="btn btn-danger">Peruuta</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </body>
+</html>
