@@ -24,10 +24,7 @@ public class GalleryController {
     
     @RequestMapping(method = RequestMethod.GET)
     public String getMaps(Model model) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String name = auth.getName();
         model.addAttribute("maps", mapRepository.findAll());
-        model.addAttribute("username", name);
         return "gallery";
     }
     
