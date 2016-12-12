@@ -3,7 +3,8 @@ package com.mycompany.karttagalleria.domain;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.jpa.domain.AbstractPersistable;
@@ -25,9 +26,8 @@ public class User extends AbstractPersistable<Long>{
     @Length(min = 10, max = 50)
     private String password;
     
-    @NotBlank
-    @ManyToMany
-    private Set<Role> roles;
+    @ManyToOne
+    private Role role;
 
     /**
      * @return the username
@@ -58,17 +58,24 @@ public class User extends AbstractPersistable<Long>{
     }
 
     /**
-     * @return the roles
+     * @return the role
      */
-    public Set<Role> getRoles() {
-        return roles;
+    public Role getRole() {
+        return role;
     }
 
     /**
-     * @param roles the roles to set
+     * @param role the role to set
      */
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+    public void setRole(Role role) {
+        this.role = role;
     }
+
+    /**
+     * @return the roles
+     */
+    
+    
+  
     
 }

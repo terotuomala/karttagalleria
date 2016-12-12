@@ -3,6 +3,7 @@ package com.mycompany.karttagalleria.service;
 import com.mycompany.karttagalleria.domain.Role;
 import com.mycompany.karttagalleria.domain.User;
 import com.mycompany.karttagalleria.repository.UserRepository;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,11 +33,6 @@ public class CustomUserDetailService implements UserDetailsService {
         if (user == null) {
             throw new UsernameNotFoundException("No such user: " + username);
         }
-        
-        Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-        for (Role role : user.getRoles()) {
-            grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
-        }
 
         return new org.springframework.security.core.userdetails.User(
                 user.getUsername(),
@@ -45,6 +41,6 @@ public class CustomUserDetailService implements UserDetailsService {
                 true,
                 true,
                 true,
-                grantedAuthorities);
+                Arrays.asList(new SimpleGrantedAuthority(user.getRole().toString())));
     }
 }

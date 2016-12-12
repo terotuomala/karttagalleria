@@ -35,25 +35,26 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="roles" class="col-sm-2 control-label">Rooli(t):</label>
+                    <label for="roles" class="col-sm-2 control-label">Rooli:</label>
                     <div class="col-sm-10">
-                        <div class="checkbox" th:each="role : ${roles}">
-                            <label>
-                                <input type="checkbox" th:field="*{roles}" th:value="${role.name}" /><span th:text="${role.name}">name</span>
-                                <span th:if="${#fields.hasErrors('roles')}" th:errors="*{roles}" th:errorclass="form-field-error">Roles error</span>
-                            </label>
-                            
-                        </div>
+                        <select class="form-control" th:field="*{role}">
+                            <option th:each="role : ${roles}"
+                                    th:value="${role.id}"
+                                    th:text="${role.name}">
+                            </option>
+                        </select>
+                        <span th:if="${#fields.hasErrors('role')}" th:errors="*{role}" th:errorclass="form-field-error">Role error</span>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                         <button type="submit" class="btn btn-success">Lisää</button>
-                        <button type="reset" class="btn btn-danger">Peruuta</button>
+                        <a href="/gallery" class="btn btn-danger" role="button">Peruuta</a>
                     </div>
                 </div>
             </form>
-
+            <br/>
+            <footer th:replace="fragments/footer :: footer"></footer>
         </div>
 
         <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>

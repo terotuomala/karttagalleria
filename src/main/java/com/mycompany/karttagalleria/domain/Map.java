@@ -1,9 +1,11 @@
 package com.mycompany.karttagalleria.domain;
 
 import java.util.Date;
+import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.URL;
 import org.springframework.data.jpa.domain.AbstractPersistable;
@@ -17,12 +19,15 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 public class Map extends AbstractPersistable<Long> {
     
     @NotBlank
+    @Length(min = 3, max = 30)
     private String title;
     
     @NotBlank
+    @Length(min = 3, max = 30)
     private String category;
     
     @NotBlank
+    @Length(min = 3, max = 80)
     private String description;
     
     @NotBlank
@@ -86,6 +91,40 @@ public class Map extends AbstractPersistable<Long> {
      */
     public void setUrl(String url) {
         this.url = url;
+    }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Map other = (Map) obj;
+        if (!Objects.equals(this.title, other.title)) {
+            return false;
+        }
+        if (!Objects.equals(this.category, other.category)) {
+            return false;
+        }
+        if (!Objects.equals(this.description, other.description)) {
+            return false;
+        }
+        if (!Objects.equals(this.url, other.url)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 53 * hash + Objects.hashCode(this.title);
+        hash = 53 * hash + Objects.hashCode(this.category);
+        hash = 53 * hash + Objects.hashCode(this.description);
+        hash = 53 * hash + Objects.hashCode(this.url);
+        return hash;
     }
     
 }
