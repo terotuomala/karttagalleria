@@ -39,8 +39,9 @@ public class UserController {
     }
     
     @RequestMapping(method = RequestMethod.POST)
-    public String addUser(@Valid @ModelAttribute User user, BindingResult bindingResult) {
+    public String addUser(@Valid @ModelAttribute User user, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
+            model.addAttribute("roles", roleRepository.findAll());
             return "addUser";
         }
         userRepository.save(user);

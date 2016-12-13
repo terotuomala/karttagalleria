@@ -2,6 +2,7 @@ package com.mycompany.karttagalleria.controller;
 
 import com.mycompany.karttagalleria.domain.Map;
 import com.mycompany.karttagalleria.repository.CategoryRepository;
+import com.mycompany.karttagalleria.repository.CoordinateSystemRepository;
 import com.mycompany.karttagalleria.repository.MapRepository;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,9 @@ public class MapController {
     @Autowired
     CategoryRepository categoryRepository;
     
+    @Autowired
+    CoordinateSystemRepository coordinateSystemRepository;
+    
     @ModelAttribute Map getMap() {
         return new Map();
     }
@@ -35,13 +39,16 @@ public class MapController {
     @RequestMapping(method = RequestMethod.GET)
     public String view(Model model) {
         model.addAttribute("categories", categoryRepository.findAll());
+        model.addAttribute("coordinateSystems", coordinateSystemRepository.findAll());
         return "addMap";
     }
     
     @RequestMapping(method = RequestMethod.POST)
-    public String addMap(@Valid @ModelAttribute Map map, BindingResult bindingResult) {
+    public String addMap(@Valid @ModelAttribute Map map, BindingResult bindingResult, Model model) {
         
         if (bindingResult.hasErrors()) {
+            model.addAttribute("categories", categoryRepository.findAll());
+            model.addAttribute("coordinateSystems", coordinateSystemRepository.findAll());
             return "addMap";
         }
         

@@ -5,6 +5,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.jpa.domain.AbstractPersistable;
@@ -26,6 +27,7 @@ public class User extends AbstractPersistable<Long>{
     @Length(min = 10, max = 50)
     private String password;
     
+    @NotNull
     @ManyToOne
     private Role role;
 

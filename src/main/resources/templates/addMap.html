@@ -47,6 +47,18 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label for="coordinateSystems" class="col-sm-2 control-label">Koordinaatisto:</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" th:field="*{coordinateSystem}">
+                            <option th:each="coordinateSystem : ${coordinateSystems}"
+                                    th:value="${coordinateSystem.id}"
+                                    th:text="${coordinateSystem.name}">
+                            </option>
+                        </select>
+                        <span th:if="${#fields.hasErrors('coordinateSystem')}" th:errors="*{coordinateSystem}" th:errorclass="form-field-error">CoordinateSystem error</span>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label for="url" class="col-sm-2 control-label">URL:</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="url" th:field="*{url}"></input>
