@@ -3,6 +3,10 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
+.userInfo {
+    float: right;
+}
+
 /*Custom Thymeleaf styles*/
 .form-field-error {
     color: red;

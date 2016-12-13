@@ -9,10 +9,14 @@
 
     </head>
     <body>
-        
+
         <footer th:fragment="footer">
             <hr></hr>
             &copy; 2016 Tero Tuomala
+            <div class="userInfo">
+                <span class="glyphicon glyphicon-user"></span>
+                <b><span sec:authentication="name"></span></b>
+            </div>
         </footer>
 
         <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
