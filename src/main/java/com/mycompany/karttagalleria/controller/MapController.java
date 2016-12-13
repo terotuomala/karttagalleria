@@ -1,6 +1,7 @@
 package com.mycompany.karttagalleria.controller;
 
 import com.mycompany.karttagalleria.domain.Map;
+import com.mycompany.karttagalleria.repository.CategoryRepository;
 import com.mycompany.karttagalleria.repository.MapRepository;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,12 +25,16 @@ public class MapController {
     @Autowired
     MapRepository mapRepository;
     
+    @Autowired
+    CategoryRepository categoryRepository;
+    
     @ModelAttribute Map getMap() {
         return new Map();
     }
     
     @RequestMapping(method = RequestMethod.GET)
-    public String view() {
+    public String view(Model model) {
+        model.addAttribute("categories", categoryRepository.findAll());
         return "addMap";
     }
     

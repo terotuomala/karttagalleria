@@ -23,6 +23,7 @@ public class Category extends AbstractPersistable<Long> {
     @OneToMany(mappedBy = "category")
     private List<Map> maps;
     
+    
     public Category() {
         this.maps = new ArrayList<Map>();
     }

@@ -25,7 +25,6 @@ public class Map extends AbstractPersistable<Long> {
     @Column(unique = true)
     private String title;
     
-    @NotBlank
     @ManyToOne
     private Category category;
     

@@ -1,8 +1,10 @@
 package com.mycompany.karttagalleria.service;
 
+import com.mycompany.karttagalleria.domain.Category;
 import com.mycompany.karttagalleria.domain.Map;
 import com.mycompany.karttagalleria.domain.Role;
 import com.mycompany.karttagalleria.domain.User;
+import com.mycompany.karttagalleria.repository.CategoryRepository;
 import com.mycompany.karttagalleria.repository.MapRepository;
 import com.mycompany.karttagalleria.repository.RoleRepository;
 import com.mycompany.karttagalleria.repository.UserRepository;
@@ -27,6 +29,9 @@ public class InitService {
     @Autowired
     MapRepository mapRepository;
     
+    @Autowired
+    CategoryRepository categoryRepository;
+    
     @PostConstruct
     public void init() {
         Role roleUser = new Role();
@@ -47,16 +52,25 @@ public class InitService {
         adminUser.setRole(roleAdmin);
         userRepository.save(adminUser);
         
+        Category categoryFirst = new Category();
+        categoryFirst.setName("Kategoria I");
+        categoryRepository.save(categoryFirst);
+        
+        Category categorySecond = new Category();
+        categorySecond.setName("Kategoria II");
+        categoryRepository.save(categorySecond);
+        
+        
         Map map = new Map();
-        map.setTitle("KarttasovellusX");
-        map.setCategory("KategoriaX");
+        map.setTitle("Karttasovellus I");
+        map.setCategory(categoryFirst);
         map.setDescription("Karttasovelluksella X voidaan tehdä sitä ja tätä.");
         map.setUrl("http://www.google.com");
         mapRepository.save(map);
         
         Map map2 = new Map();
         map2.setTitle("KarttasovellusY");
-        map2.setCategory("KategoriaY");
+        map2.setCategory(categorySecond);
         map2.setDescription("Karttasovelluksella Y voidaan tehdä sitä ja tätä.");
         map2.setUrl("http://www.google.com");
         mapRepository.save(map2);
