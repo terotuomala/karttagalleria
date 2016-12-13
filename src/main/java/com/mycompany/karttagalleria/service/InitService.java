@@ -99,16 +99,16 @@ public class InitService {
         Map map = new Map();
         map.setTitle("Karttasovellus I");
         map.setCategory(categoryFirst);
-        map.setDescription("Karttasovelluksella X voidaan tehdä sitä ja tätä.");
+        map.setDescription("Karttasovelluksella I voidaan tehdä sitä sun tätä.");
         map.setCoordinateSystem(coordinateSystemFirst);
         map.setUrl("http://www.google.com");
         mapRepository.save(map);
         
         // Create map 'Karttasovellus II' and assign category 'categorySecond' to it
         Map map2 = new Map();
-        map2.setTitle("KarttasovellusY");
+        map2.setTitle("Karttasovellus II");
         map2.setCategory(categorySecond);
-        map2.setDescription("Karttasovelluksella Y voidaan tehdä sitä ja tätä.");
+        map2.setDescription("Karttasovelluksella II voidaan tehdä sitä sun tätä.");
         map2.setCoordinateSystem(coordinateSystemSecond);
         map2.setUrl("http://www.google.com");
         mapRepository.save(map2);

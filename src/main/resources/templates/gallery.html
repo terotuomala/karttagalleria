@@ -27,7 +27,7 @@
                     <a th:href="@{gallery/{mapId}(mapId=${map.id})}"><h3 th:text="${map.title}">title</h3></a>
                     <p th:text="${map.description}"></p>
 
-                    <div class="form-group">
+                    <div class="form-group" sec:authorize="hasRole('ADMIN')">
                         <form th:action="@{/gallery/{mapId}(mapId=${map.id})}" th:method="DELETE">
 <!--                            <button type="submit" class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></button>-->
                             <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
