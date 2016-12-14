@@ -12,6 +12,7 @@ import com.mycompany.karttagalleria.repository.RoleRepository;
 import com.mycompany.karttagalleria.repository.UserRepository;
 import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 /**
@@ -19,6 +20,7 @@ import org.springframework.stereotype.Service;
  * @author Tero Tuomala
  */
 
+@Profile("default")
 @Service
 public class InitService {
     
