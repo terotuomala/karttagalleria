@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.jpa.domain.AbstractPersistable;
@@ -20,7 +21,7 @@ public class Category extends AbstractPersistable<Long> {
     @Column(unique = true)
     private String name;
     
-    @OneToMany(mappedBy = "category")
+    @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
     private List<Map> maps;
     
     
@@ -52,8 +53,8 @@ public class Category extends AbstractPersistable<Long> {
     /**
      * @param maps the maps to set
      */
-    public void setMaps(List<Map> maps) {
-        this.maps = maps;
+    public void setMaps(Map map) {
+        this.maps.add(map);
     }
     
 }

@@ -2,10 +2,9 @@ package com.mycompany.karttagalleria.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.jpa.domain.AbstractPersistable;
@@ -21,7 +20,7 @@ public class Role extends AbstractPersistable<Long> {
     @Column(unique = true)
     private String name;
     
-    @OneToMany(mappedBy = "role")
+    @OneToMany(mappedBy = "role", fetch = FetchType.EAGER)
     private List<User> users;
     
     public Role() {
@@ -52,8 +51,8 @@ public class Role extends AbstractPersistable<Long> {
     /**
      * @param users the users to set
      */
-    public void setUsers(List<User> users) {
-        this.users = users;
+    public void setUsers(User user) {
+        this.users.add(user);
     }
     
 }

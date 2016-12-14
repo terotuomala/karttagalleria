@@ -33,11 +33,9 @@ public class MapService {
     public void saveMap(Map map) {
         Category category = categoryRepository.findOne(map.getCategory().getId());
         CoordinateSystem coordinateSystem = coordinateSystemRepository.findOne(map.getCoordinateSystem().getId());
-        
-        List<Map> maps = new ArrayList<Map>();
-        maps.add(map);
-        category.setMaps(maps);
-        coordinateSystem.setMaps(maps);
+
+        category.setMaps(map);
+        coordinateSystem.setMaps(map);
         
         mapRepository.save(map);
         categoryRepository.save(category);

@@ -26,14 +26,10 @@ public class UserService {
     public void saveUser(User user) {
         
         Role role = roleRepository.findOne(user.getRole().getId());
-        
-        List<User> users = new ArrayList<User>();
-        users.add(user);
-        role.setUsers(users);
+        role.setUsers(user);
         
         userRepository.save(user);
         roleRepository.save(role);
-        
         
     }
 }
