@@ -3,11 +3,10 @@ package com.mycompany.karttagalleria.service;
 import com.mycompany.karttagalleria.domain.Account;
 import com.mycompany.karttagalleria.domain.Role;
 import com.mycompany.karttagalleria.repository.RoleRepository;
-import java.util.ArrayList;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.mycompany.karttagalleria.repository.AccountRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
  *
@@ -15,20 +14,26 @@ import com.mycompany.karttagalleria.repository.AccountRepository;
  */
 
 @Service
-public class UserService {
+public class AccountService {
     
     @Autowired
-    AccountRepository userRepository;
+    private AccountRepository accountRepository;
     
     @Autowired
-    RoleRepository roleRepository;
+    private RoleRepository roleRepository;
     
-    public void saveUser(Account user) {
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+ 
+    
+    public void saveUser(Account account) {
         
-        Role role = roleRepository.findOne(user.getRole().getId());
-        role.setUsers(user);
+        Role role = roleRepository.findOne(account.getRole().getId());
+        role.setUsers(account);
         
-        userRepository.save(user);
+        account.setPassword(passwordEncoder.encode(account.getPassword()));
+        
+        accountRepository.save(account);
         roleRepository.save(role);
         
     }

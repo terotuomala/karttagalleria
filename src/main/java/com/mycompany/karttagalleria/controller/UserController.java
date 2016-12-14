@@ -2,7 +2,7 @@ package com.mycompany.karttagalleria.controller;
 
 import com.mycompany.karttagalleria.domain.Account;
 import com.mycompany.karttagalleria.repository.RoleRepository;
-import com.mycompany.karttagalleria.service.UserService;
+import com.mycompany.karttagalleria.service.AccountService;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,7 +26,7 @@ public class UserController {
     RoleRepository roleRepository;
     
     @Autowired
-    UserService userService;
+    AccountService userService;
     
     @ModelAttribute Account getUser() {
         return new Account();

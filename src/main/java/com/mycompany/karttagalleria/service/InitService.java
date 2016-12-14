@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import com.mycompany.karttagalleria.repository.AccountRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
  *
@@ -25,7 +26,7 @@ import com.mycompany.karttagalleria.repository.AccountRepository;
 public class InitService {
     
     @Autowired
-    AccountRepository userRepository;
+    AccountRepository accountRepository;
     
     @Autowired
     RoleRepository roleRepository;
@@ -38,6 +39,9 @@ public class InitService {
     
     @Autowired
     CoordinateSystemRepository coordinateSystemRepository;
+    
+    @Autowired
+    private PasswordEncoder passwordEncoder;
     
     @PostConstruct
     public void init() {
@@ -59,23 +63,23 @@ public class InitService {
         // Create user 'user' and assign role 'roleUser' to it
         Account userUser = new Account();
         userUser.setUsername("user");
-        userUser.setPassword("password1234");
+        userUser.setPassword(passwordEncoder.encode("password1234"));
         userUser.setRole(roleUser);
-        userRepository.save(userUser);
+        accountRepository.save(userUser);
         
         // Create user 'publisher' and assign role 'rolePublisher' to it
         Account publisherUser = new Account();
         publisherUser.setUsername("publisher");
-        publisherUser.setPassword("password1234");
+        publisherUser.setPassword(passwordEncoder.encode("password1234"));
         publisherUser.setRole(rolePublisher);
-        userRepository.save(publisherUser);
+        accountRepository.save(publisherUser);
         
         // Create user 'admin' and assign role 'roleAdmin' to it
         Account adminUser = new Account();
         adminUser.setUsername("admin");
-        adminUser.setPassword("password1234");
+        adminUser.setPassword(passwordEncoder.encode("password1234"));
         adminUser.setRole(roleAdmin);
-        userRepository.save(adminUser);
+        accountRepository.save(adminUser);
         
         // Create category 'Kategoria I'
         Category categoryFirst = new Category();

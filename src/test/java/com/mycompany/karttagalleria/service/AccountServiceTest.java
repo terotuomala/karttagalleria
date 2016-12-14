@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import com.mycompany.karttagalleria.repository.AccountRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
  *
@@ -19,23 +20,26 @@ import com.mycompany.karttagalleria.repository.AccountRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class UserServiceTest {
+public class AccountServiceTest {
     
     @Autowired
-    AccountRepository userRepository;
+    private AccountRepository accountRepository;
     
     @Autowired
-    RoleRepository roleRepository;
+    private RoleRepository roleRepository;
     
     @Autowired
-    UserService userService;
+    private AccountService accountService;
+    
+    @Autowired
+    private PasswordEncoder passwordEncoder;
     
     @Test
     public void testSaveUser() throws Exception {
         
         Account user = new Account();
         user.setUsername("usertesti");
-        user.setPassword("salasana1234");
+        user.setPassword(passwordEncoder.encode("salasana1234"));
         
         Role role = new Role();
         role.setName("TESTIROOLI");
@@ -43,9 +47,9 @@ public class UserServiceTest {
         
         roleRepository.save(role);
         System.out.println(user.getRole().getId());
-        userService.saveUser(user);
+        accountService.saveUser(user);
         
-        Account retreivedUser = userRepository.findByUsername("usertesti");
+        Account retreivedUser = accountRepository.findByUsername("usertesti");
         assertNotNull(retreivedUser);
         assertEquals("salasana1234", retreivedUser.getPassword());
         assertEquals("TESTIROOLI", retreivedUser.getRole().getName());
