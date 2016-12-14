@@ -28,26 +28,21 @@ public class AccountServiceTest {
     @Autowired
     private RoleRepository roleRepository;
     
-    @Autowired
-    private AccountService accountService;
-    
-    @Autowired
-    private PasswordEncoder passwordEncoder;
     
     @Test
-    public void testSaveUser() throws Exception {
+    public void testSaveAccount() throws Exception {
         
-        Account user = new Account();
-        user.setUsername("usertesti");
-        user.setPassword(passwordEncoder.encode("salasana1234"));
+        Account account = new Account();
+        account.setUsername("usertesti");
+        account.setPassword("salasana1234");
         
         Role role = new Role();
         role.setName("TESTIROOLI");
-        user.setRole(role);
+        account.setRole(role);
         
         roleRepository.save(role);
-        System.out.println(user.getRole().getId());
-        accountService.saveUser(user);
+        System.out.println(account.getRole().getId());
+        accountRepository.save(account);
         
         Account retreivedUser = accountRepository.findByUsername("usertesti");
         assertNotNull(retreivedUser);

@@ -47,5 +47,10 @@ public class DefaultSecurityConfiguration extends WebSecurityConfigurerAdapter {
         auth.inMemoryAuthentication().withUser("publisher").password("password1234").roles("PUBLISHER");
         auth.inMemoryAuthentication().withUser("admin").password("password1234").roles("ADMIN");
     }
+    
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
    
 }

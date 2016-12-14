@@ -26,7 +26,7 @@ public class AccountService {
     private PasswordEncoder passwordEncoder;
  
     
-    public void saveUser(Account account) {
+    public void saveAccount(Account account) {
         
         Role role = roleRepository.findOne(account.getRole().getId());
         role.setUsers(account);

@@ -44,7 +44,7 @@ public class AccountController {
             model.addAttribute("roles", roleRepository.findAll());
             return "addUser";
         }
-        accountService.saveUser(account);
+        accountService.saveAccount(account);
         return "redirect:/gallery";
     }
 }
