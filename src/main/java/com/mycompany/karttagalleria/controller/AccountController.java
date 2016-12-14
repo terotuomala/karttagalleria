@@ -11,7 +11,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import com.mycompany.karttagalleria.repository.AccountRepository;
 
 /**
  *
@@ -20,13 +19,13 @@ import com.mycompany.karttagalleria.repository.AccountRepository;
 
 @Controller
 @RequestMapping("addUser")
-public class UserController {
+public class AccountController {
     
     @Autowired
     RoleRepository roleRepository;
     
     @Autowired
-    AccountService userService;
+    AccountService accountService;
     
     @ModelAttribute Account getUser() {
         return new Account();
@@ -39,13 +38,13 @@ public class UserController {
     }
     
     @RequestMapping(method = RequestMethod.POST)
-    public String addUser(@Valid @ModelAttribute Account user, BindingResult bindingResult, Model model) {
+    public String addUser(@Valid @ModelAttribute Account account, BindingResult bindingResult, Model model) {
         
         if (bindingResult.hasErrors()) {
             model.addAttribute("roles", roleRepository.findAll());
             return "addUser";
         }
-        userService.saveUser(user);
+        accountService.saveUser(account);
         return "redirect:/gallery";
     }
 }

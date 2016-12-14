@@ -1,6 +1,5 @@
 package com.mycompany.karttagalleria.service;
 
-import com.mycompany.karttagalleria.domain.Role;
 import com.mycompany.karttagalleria.domain.Account;
 import java.util.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +37,6 @@ public class CustomUserDetailService implements UserDetailsService {
                 true,
                 true,
                 true,
-                Arrays.asList(new SimpleGrantedAuthority(user.getRole().toString())));
+                Arrays.asList(new SimpleGrantedAuthority(user.getRole().getName())));
     }
 }

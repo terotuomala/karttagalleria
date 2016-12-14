@@ -22,13 +22,13 @@ import com.mycompany.karttagalleria.repository.AccountRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class UserControllerTest {
+public class AccountControllerTest {
 
     @Autowired
     private WebApplicationContext webAppContext;
 
     @Autowired
-    AccountRepository userRepository;
+    AccountRepository accountRepository;
     
     @Autowired
     RoleRepository roleRepository;
