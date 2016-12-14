@@ -21,7 +21,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  * @author Tero Tuomala
  */
 
-//@Profile("default")
+@Profile("default")
 @Service
 public class InitService {
     
