@@ -1,7 +1,7 @@
 package com.mycompany.karttagalleria.service;
 
 import com.mycompany.karttagalleria.domain.Role;
-import com.mycompany.karttagalleria.domain.User;
+import com.mycompany.karttagalleria.domain.Account;
 import com.mycompany.karttagalleria.repository.UserRepository;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -29,7 +29,7 @@ public class CustomUserDetailService implements UserDetailsService {
     
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username);
+        Account user = userRepository.findByUsername(username);
         if (user == null) {
             throw new UsernameNotFoundException("No such user: " + username);
         }

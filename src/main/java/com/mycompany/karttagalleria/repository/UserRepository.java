@@ -1,6 +1,6 @@
 package com.mycompany.karttagalleria.repository;
 
-import com.mycompany.karttagalleria.domain.User;
+import com.mycompany.karttagalleria.domain.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author Tero Tuomala
  */
 
-public interface UserRepository extends JpaRepository<User, Long>{
+public interface UserRepository extends JpaRepository<Account, Long>{
     
-    User findByUsername(String username);
+    Account findByUsername(String username);
 }

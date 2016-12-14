@@ -1,7 +1,7 @@
 package com.mycompany.karttagalleria.service;
 
 import com.mycompany.karttagalleria.domain.Role;
-import com.mycompany.karttagalleria.domain.User;
+import com.mycompany.karttagalleria.domain.Account;
 import com.mycompany.karttagalleria.repository.RoleRepository;
 import com.mycompany.karttagalleria.repository.UserRepository;
 import static org.junit.Assert.assertEquals;
@@ -33,7 +33,7 @@ public class UserServiceTest {
     @Test
     public void testSaveUser() throws Exception {
         
-        User user = new User();
+        Account user = new Account();
         user.setUsername("usertesti");
         user.setPassword("salasana1234");
         
@@ -45,7 +45,7 @@ public class UserServiceTest {
         System.out.println(user.getRole().getId());
         userService.saveUser(user);
         
-        User retreivedUser = userRepository.findByUsername("usertesti");
+        Account retreivedUser = userRepository.findByUsername("usertesti");
         assertNotNull(retreivedUser);
         assertEquals("salasana1234", retreivedUser.getPassword());
         assertEquals("TESTIROOLI", retreivedUser.getRole().getName());

@@ -4,7 +4,7 @@ import com.mycompany.karttagalleria.domain.Category;
 import com.mycompany.karttagalleria.domain.CoordinateSystem;
 import com.mycompany.karttagalleria.domain.Map;
 import com.mycompany.karttagalleria.domain.Role;
-import com.mycompany.karttagalleria.domain.User;
+import com.mycompany.karttagalleria.domain.Account;
 import com.mycompany.karttagalleria.repository.CategoryRepository;
 import com.mycompany.karttagalleria.repository.CoordinateSystemRepository;
 import com.mycompany.karttagalleria.repository.MapRepository;
@@ -55,21 +55,21 @@ public class InitService {
         roleRepository.save(roleAdmin);
         
         // Create user 'user' and assign role 'roleUser' to it
-        User userUser = new User();
+        Account userUser = new Account();
         userUser.setUsername("user");
         userUser.setPassword("password1234");
         userUser.setRole(roleUser);
         userRepository.save(userUser);
         
         // Create user 'publisher' and assign role 'rolePublisher' to it
-        User publisherUser = new User();
+        Account publisherUser = new Account();
         publisherUser.setUsername("publisher");
         publisherUser.setPassword("password1234");
         publisherUser.setRole(rolePublisher);
         userRepository.save(publisherUser);
         
         // Create user 'admin' and assign role 'roleAdmin' to it
-        User adminUser = new User();
+        Account adminUser = new Account();
         adminUser.setUsername("admin");
         adminUser.setPassword("password1234");
         adminUser.setRole(roleAdmin);

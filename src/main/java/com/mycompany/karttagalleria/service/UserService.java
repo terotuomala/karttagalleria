@@ -1,6 +1,6 @@
 package com.mycompany.karttagalleria.service;
 
-import com.mycompany.karttagalleria.domain.User;
+import com.mycompany.karttagalleria.domain.Account;
 import com.mycompany.karttagalleria.domain.Role;
 import com.mycompany.karttagalleria.repository.RoleRepository;
 import com.mycompany.karttagalleria.repository.UserRepository;
@@ -23,7 +23,7 @@ public class UserService {
     @Autowired
     RoleRepository roleRepository;
     
-    public void saveUser(User user) {
+    public void saveUser(Account user) {
         
         Role role = roleRepository.findOne(user.getRole().getId());
         role.setUsers(user);

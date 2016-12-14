@@ -1,6 +1,6 @@
 package com.mycompany.karttagalleria.controller;
 
-import com.mycompany.karttagalleria.domain.User;
+import com.mycompany.karttagalleria.domain.Account;
 import com.mycompany.karttagalleria.repository.RoleRepository;
 import com.mycompany.karttagalleria.repository.UserRepository;
 import com.mycompany.karttagalleria.service.UserService;
@@ -28,8 +28,8 @@ public class UserController {
     @Autowired
     UserService userService;
     
-    @ModelAttribute User getUser() {
-        return new User();
+    @ModelAttribute Account getUser() {
+        return new Account();
     }
     
     @RequestMapping(method = RequestMethod.GET)
@@ -39,7 +39,7 @@ public class UserController {
     }
     
     @RequestMapping(method = RequestMethod.POST)
-    public String addUser(@Valid @ModelAttribute User user, BindingResult bindingResult, Model model) {
+    public String addUser(@Valid @ModelAttribute Account user, BindingResult bindingResult, Model model) {
         
         if (bindingResult.hasErrors()) {
             model.addAttribute("roles", roleRepository.findAll());

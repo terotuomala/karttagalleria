@@ -1,10 +1,8 @@
 package com.mycompany.karttagalleria.domain;
 
-import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
@@ -16,7 +14,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
  */
 
 @Entity
-public class User extends AbstractPersistable<Long>{
+public class Account extends AbstractPersistable<Long>{
     
     @NotBlank
     @Length(min = 3, max = 20)

@@ -21,10 +21,10 @@ public class Role extends AbstractPersistable<Long> {
     private String name;
     
     @OneToMany(mappedBy = "role", fetch = FetchType.EAGER)
-    private List<User> users;
+    private List<Account> users;
     
     public Role() {
-        this.users = new ArrayList<User>();
+        this.users = new ArrayList<Account>();
     }
     
     /**
@@ -44,14 +44,14 @@ public class Role extends AbstractPersistable<Long> {
     /**
      * @return the users
      */
-    public List<User> getUsers() {
+    public List<Account> getUsers() {
         return users;
     }
 
     /**
      * @param users the users to set
      */
-    public void setUsers(User user) {
+    public void setUsers(Account user) {
         this.users.add(user);
     }
     
