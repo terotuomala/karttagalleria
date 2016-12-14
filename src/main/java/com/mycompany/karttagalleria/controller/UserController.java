@@ -2,7 +2,6 @@ package com.mycompany.karttagalleria.controller;
 
 import com.mycompany.karttagalleria.domain.Account;
 import com.mycompany.karttagalleria.repository.RoleRepository;
-import com.mycompany.karttagalleria.repository.UserRepository;
 import com.mycompany.karttagalleria.service.UserService;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import com.mycompany.karttagalleria.repository.AccountRepository;
 
 /**
  *

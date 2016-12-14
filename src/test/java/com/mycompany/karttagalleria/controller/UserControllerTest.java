@@ -1,7 +1,6 @@
 package com.mycompany.karttagalleria.controller;
 
 import com.mycompany.karttagalleria.repository.RoleRepository;
-import com.mycompany.karttagalleria.repository.UserRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,6 +13,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
+import com.mycompany.karttagalleria.repository.AccountRepository;
 
 /**
  *
@@ -28,7 +28,7 @@ public class UserControllerTest {
     private WebApplicationContext webAppContext;
 
     @Autowired
-    UserRepository userRepository;
+    AccountRepository userRepository;
     
     @Autowired
     RoleRepository roleRepository;

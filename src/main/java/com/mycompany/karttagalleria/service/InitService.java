@@ -9,23 +9,23 @@ import com.mycompany.karttagalleria.repository.CategoryRepository;
 import com.mycompany.karttagalleria.repository.CoordinateSystemRepository;
 import com.mycompany.karttagalleria.repository.MapRepository;
 import com.mycompany.karttagalleria.repository.RoleRepository;
-import com.mycompany.karttagalleria.repository.UserRepository;
 import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
+import com.mycompany.karttagalleria.repository.AccountRepository;
 
 /**
  *
  * @author Tero Tuomala
  */
 
-@Profile("default")
+//@Profile("default")
 @Service
 public class InitService {
     
     @Autowired
-    UserRepository userRepository;
+    AccountRepository userRepository;
     
     @Autowired
     RoleRepository roleRepository;

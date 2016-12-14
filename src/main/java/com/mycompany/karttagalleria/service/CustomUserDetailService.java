@@ -2,7 +2,6 @@ package com.mycompany.karttagalleria.service;
 
 import com.mycompany.karttagalleria.domain.Role;
 import com.mycompany.karttagalleria.domain.Account;
-import com.mycompany.karttagalleria.repository.UserRepository;
 import java.util.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -11,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import com.mycompany.karttagalleria.repository.AccountRepository;
 
 /**
  *
@@ -22,7 +22,7 @@ import org.springframework.stereotype.Service;
 public class CustomUserDetailService implements UserDetailsService {
     
     @Autowired
-    UserRepository userRepository;
+    AccountRepository userRepository;
     
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

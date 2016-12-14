@@ -3,7 +3,6 @@ package com.mycompany.karttagalleria.service;
 import com.mycompany.karttagalleria.domain.Role;
 import com.mycompany.karttagalleria.domain.Account;
 import com.mycompany.karttagalleria.repository.RoleRepository;
-import com.mycompany.karttagalleria.repository.UserRepository;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import org.junit.Test;
@@ -11,6 +10,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import com.mycompany.karttagalleria.repository.AccountRepository;
 
 /**
  *
@@ -22,7 +22,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class UserServiceTest {
     
     @Autowired
-    UserRepository userRepository;
+    AccountRepository userRepository;
     
     @Autowired
     RoleRepository roleRepository;
