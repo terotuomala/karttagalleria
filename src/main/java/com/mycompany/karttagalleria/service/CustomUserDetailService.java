@@ -21,22 +21,23 @@ import com.mycompany.karttagalleria.repository.AccountRepository;
 public class CustomUserDetailService implements UserDetailsService {
     
     @Autowired
-    AccountRepository userRepository;
+    AccountRepository accountRepository;
     
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Account user = userRepository.findByUsername(username);
-        if (user == null) {
+        Account account = accountRepository.findByUsername(username);
+        System.out.println("TUNNUKSEN ROOLI: " + account.getRole().getName());
+        if (account == null) {
             throw new UsernameNotFoundException("No such user: " + username);
         }
 
         return new org.springframework.security.core.userdetails.User(
-                user.getUsername(),
-                user.getPassword(),
+                account.getUsername(),
+                account.getPassword(),
                 true,
                 true,
                 true,
                 true,
-                Arrays.asList(new SimpleGrantedAuthority(user.getRole().getName())));
+                Arrays.asList(new SimpleGrantedAuthority("ROLE_" + account.getRole().getName())));
     }
 }
