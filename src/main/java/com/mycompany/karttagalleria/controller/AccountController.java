@@ -27,7 +27,7 @@ public class AccountController {
     @Autowired
     AccountService accountService;
     
-    @ModelAttribute Account getUser() {
+    @ModelAttribute Account getAccount() {
         return new Account();
     }
     

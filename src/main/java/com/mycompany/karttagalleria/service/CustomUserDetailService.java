@@ -26,7 +26,6 @@ public class CustomUserDetailService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Account account = accountRepository.findByUsername(username);
-        System.out.println("TUNNUKSEN ROOLI: " + account.getRole().getName());
         if (account == null) {
             throw new UsernameNotFoundException("No such user: " + username);
         }
@@ -39,5 +38,5 @@ public class CustomUserDetailService implements UserDetailsService {
                 true,
                 true,
                 Arrays.asList(new SimpleGrantedAuthority("ROLE_" + account.getRole().getName())));
-    }
+        }
 }
