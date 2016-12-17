@@ -2,7 +2,7 @@ body {
     padding-top: 70px;
     font-family: 'Open Sans', sans-serif;
 }
-
+    
 /*Custom Thymeleaf styles*/
 .form-field-error {
     color: red;
@@ -28,5 +28,15 @@ body {
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
     color: #d9d9d9;
+}
+/* button logout*/
+.navbar-default .btn-logout {
+    color: white;
+}
+/* button link*/
+.navbar-default .btn-link:hover,
+.navbar-default .btn-link:focus {
+    color: #d9d9d9;
+    text-decoration: none;
 }
 

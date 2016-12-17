@@ -30,21 +30,20 @@
                                     <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-plus"></span> Lisää
                                         <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
-                                        <li><a th:href="@{/addMap}"><span class="glyphicon glyphicon-globe"></span> Uusi kartta</a></li>
+                                        <li><a th:href="@{/map/add}"><span class="glyphicon glyphicon-globe"></span> Uusi kartta</a></li>
                                         <li sec:authorize="hasRole('ADMIN')"><a th:href="@{/addUser}"><span class="glyphicon glyphicon-user"></span> Uusi käyttäjä</a></li>
                                     </ul>
                                 </li>
                             </ul>
                         </div>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a th:href="@{/login}"><span class="glyphicon glyphicon-log-out"></span> Kirjaudu ulos (<span sec:authentication="name"></span>)</a></li>
-                        </ul>
+                        <form class="navbar-form navbar-right" th:action="@{/logout}" method="post">
+                            <button type="submit" class="btn btn-link btn-logout"><span class="glyphicon glyphicon-log-out"></span> Kirjaudu ulos</button>
+                        </form>
                         <form class="navbar-form navbar-right">
                             <div class="form-group">
                                 <input type="text" class="form-control" id="provider-json" placeholder="Hae avainsanalla.."></input>
                             </div>
                         </form>
-
                     </div>
                 </div>
             </nav>

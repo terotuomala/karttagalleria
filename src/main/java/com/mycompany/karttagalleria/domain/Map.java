@@ -114,9 +114,23 @@ public class Map extends AbstractPersistable<Long> {
     public void setUrl(String url) {
         this.url = url;
     }
-    
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 37 * hash + Objects.hashCode(this.title);
+        hash = 37 * hash + Objects.hashCode(this.category);
+        hash = 37 * hash + Objects.hashCode(this.description);
+        hash = 37 * hash + Objects.hashCode(this.coordinateSystem);
+        hash = 37 * hash + Objects.hashCode(this.url);
+        return hash;
+    }
+
     @Override
     public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
         if (obj == null) {
             return false;
         }
@@ -127,26 +141,18 @@ public class Map extends AbstractPersistable<Long> {
         if (!Objects.equals(this.title, other.title)) {
             return false;
         }
-        if (!Objects.equals(this.category, other.category)) {
-            return false;
-        }
         if (!Objects.equals(this.description, other.description)) {
             return false;
         }
         if (!Objects.equals(this.url, other.url)) {
             return false;
         }
+        if (!Objects.equals(this.category, other.category)) {
+            return false;
+        }
+        if (!Objects.equals(this.coordinateSystem, other.coordinateSystem)) {
+            return false;
+        }
         return true;
     }
-
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 53 * hash + Objects.hashCode(this.title);
-        hash = 53 * hash + Objects.hashCode(this.getCategory());
-        hash = 53 * hash + Objects.hashCode(this.description);
-        hash = 53 * hash + Objects.hashCode(this.url);
-        return hash;
-    }
-
 }

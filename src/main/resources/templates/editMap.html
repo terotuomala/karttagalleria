@@ -15,11 +15,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Lisää uusi kartta</h1>
+                    <h1 class="page-header">Muokkaa karttaa <i><span th:text="${map.title}"></span></i></h1>
                 </div>
             </div>
 
-            <form class="form-horizontal" action="#" th:action="@{/map/add}" th:object="${map}" method="POST">
+            <form class="form-horizontal" action="#" th:action="@{/map/edit/{mapId}(mapId=${map.id})}" th:object="${map}" method="POST">
                 <div class="form-group">
                     <label for="title" class="col-sm-2 control-label">Otsikko:</label>
                     <div class="col-sm-10">

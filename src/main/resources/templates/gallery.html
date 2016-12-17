@@ -24,14 +24,13 @@
                     <div class="gallery-img-wrapper">
                         <a th:href="${map.url}"><img class="img-responsive" src="http://placehold.it/750x427?text=Tulossa" alt=""></img></a>
                     </div>
-                    <a th:href="@{gallery/{mapId}(mapId=${map.id})}"><h3 th:text="${map.title}">title</h3></a>
+                    <a th:href="@{map/{mapId}(mapId=${map.id})}"><h3 th:text="${map.title}">title</h3></a>
                     <p th:text="${map.description}"></p>
 
                     <div class="form-group" sec:authorize="hasRole('ADMIN')">
-                        <form th:action="@{/gallery/{mapId}(mapId=${map.id})}" th:method="DELETE">
-<!--                            <button type="submit" class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></button>-->
+                        <form th:action="@{/map/{mapId}(mapId=${map.id})}" th:method="DELETE">
                             <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
-
+                            <a th:href="@{map/edit/{mapId}(mapId=${map.id})}" class="btn btn-warning" role="button"><span class="glyphicon glyphicon-pencil"></span></a>
                         </form>
                     </div>
                     <br/>

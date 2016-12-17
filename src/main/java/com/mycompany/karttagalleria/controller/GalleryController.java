@@ -24,18 +24,7 @@ public class GalleryController {
     public String getMaps(Model model) {
         model.addAttribute("maps", mapRepository.findAll());
         return "gallery";
-    }
-    
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public String getMap(@PathVariable Long id, Model model) {
-        model.addAttribute("map", mapRepository.findOne(id));
-        return "map";
-    }
-    
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public String deleteMap(@PathVariable Long id) {
-        mapRepository.delete(id);
-        return "redirect:/gallery";
+        
     }
     
 }
