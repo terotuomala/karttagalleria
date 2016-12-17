@@ -30,8 +30,19 @@
                                     <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-plus"></span> Lisää
                                         <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
-                                        <li><a th:href="@{/map/add}"><span class="glyphicon glyphicon-globe"></span> Uusi kartta</a></li>
-                                        <li sec:authorize="hasRole('ADMIN')"><a th:href="@{/addUser}"><span class="glyphicon glyphicon-user"></span> Uusi käyttäjä</a></li>
+                                        <li><a th:href="@{/map/add}"><span class="glyphicon glyphicon-globe"></span> Kartta</a></li>
+                                        <li sec:authorize="hasRole('ADMIN')"><a th:href="@{/user/add}"><span class="glyphicon glyphicon-user"></span> Käyttäjä</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div sec:authorize="hasRole('ADMIN')">
+                            <ul class="nav navbar-nav">
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-edit"></span> Muokkaa
+                                        <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a th:href="@{/account/list}"><span class="glyphicon glyphicon-user"></span> Käyttäjää</a></li>
                                     </ul>
                                 </li>
                             </ul>

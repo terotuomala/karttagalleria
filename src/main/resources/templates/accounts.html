@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Karttagalleria</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+        <link th:href="@{/css/main.css}" rel="stylesheet"/>
+
+    </head>
+    <body>
+
+        <header th:replace="fragments/header :: header"></header>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Muokkaa käyttäjää</h1>
+                </div>
+            </div>
+            
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <td><b>Käyttäjänimi:</b></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="account : ${accounts}"> 
+                        <td th:text="${account.username}"></td>
+                        <td><a th:href="@{/account/edit/{accountId}(accountId=${account.id})}" class="btn btn-warning" role="button"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <a href="/gallery" class="btn btn-info" role="button"><span class="glyphicon glyphicon-chevron-left"></span> Takaisin</a>
+            <br/><br/>
+            <footer th:replace="fragments/footer :: footer"></footer>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </body>
+</html>

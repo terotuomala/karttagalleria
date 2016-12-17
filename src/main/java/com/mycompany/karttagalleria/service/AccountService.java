@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.mycompany.karttagalleria.repository.AccountRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -26,6 +27,7 @@ public class AccountService {
     private PasswordEncoder passwordEncoder;
  
     
+    @Transactional
     public void saveAccount(Account account) {
         
         Role role = roleRepository.findOne(account.getRole().getId());
@@ -34,6 +36,20 @@ public class AccountService {
         account.setPassword(passwordEncoder.encode(account.getPassword()));
         
         accountRepository.save(account);
+        roleRepository.save(role);
+        
+    }
+    
+    @Transactional
+    public void updateAccount(Account oldAccount, Account newAccount) {
+        oldAccount.setUsername(newAccount.getUsername());
+        oldAccount.setPassword(passwordEncoder.encode(newAccount.getPassword()));
+        oldAccount.setRole(newAccount.getRole());
+        
+        Role role = roleRepository.findOne(oldAccount.getRole().getId());
+        role.setUsers(oldAccount);  
+        
+        accountRepository.save(oldAccount);
         roleRepository.save(role);
         
     }
