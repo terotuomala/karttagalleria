@@ -34,13 +34,13 @@ public class MapControllerTest {
 
     @Test
     public void statusOk() throws Exception {
-        mockMvc.perform(get("/addMap"))
+        mockMvc.perform(get("/map/add"))
                 .andExpect(status().isOk());
     }
 
     @Test
     public void modelHasAttributeMap() throws Exception {
-        mockMvc.perform(get("/addMap"))
+        mockMvc.perform(get("/map/add"))
                 .andExpect(model().attributeExists("categories"))
                 .andExpect(model().attributeExists("coordinateSystems"));
     }

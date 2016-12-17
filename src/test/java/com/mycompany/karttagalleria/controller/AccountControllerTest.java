@@ -14,12 +14,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 import com.mycompany.karttagalleria.repository.AccountRepository;
+import org.springframework.http.MediaType;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 
 /**
  *
  * @author Tero Tuomala
  */
-
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class AccountControllerTest {
@@ -29,7 +30,7 @@ public class AccountControllerTest {
 
     @Autowired
     AccountRepository accountRepository;
-    
+
     @Autowired
     RoleRepository roleRepository;
 
@@ -40,15 +41,23 @@ public class AccountControllerTest {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(webAppContext).build();
     }
 
+    
     @Test
     public void statusOk() throws Exception {
-        mockMvc.perform(get("/addUser"))
+        mockMvc.perform(get("/account/list"))
                 .andExpect(status().isOk());
     }
 
     @Test
-    public void modelHasAttributeMap() throws Exception {
-        mockMvc.perform(get("/addUser"))
+    public void modelHasAttributeAccountList() throws Exception {
+        mockMvc.perform(get("/account/list"))
+                .andExpect(model().attributeExists("account"))
+                .andExpect(model().attributeExists("roles"));
+    }
+
+    @Test
+    public void modelHasAttributeAccountAdd() throws Exception {
+        mockMvc.perform(get("/account/add"))
                 .andExpect(model().attributeExists("roles"));
     }
 

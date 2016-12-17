@@ -41,7 +41,6 @@ public class AccountServiceTest {
         account.setRole(role);
         
         roleRepository.save(role);
-        System.out.println(account.getRole().getId());
         accountRepository.save(account);
         
         Account retreivedUser = accountRepository.findByUsername("usertesti");
@@ -53,5 +52,30 @@ public class AccountServiceTest {
         assertNotNull(retreivedRole);
         assertEquals("usertesti", retreivedRole.getUsers().get(0).getUsername());
         
+    }
+    
+    @Test
+    public void testUpdateAccount() throws Exception {
+        
+        Account newAccount = accountRepository.findByUsername("usertesti");
+        newAccount.setUsername("usertesti2");
+        newAccount.setPassword("salasana12345");
+        
+        Role newRole = roleRepository.findByName("TESTIROOLI");
+        newRole.setName("TESTIROOLI2");
+        newAccount.setRole(newRole);
+        
+        roleRepository.save(newRole);
+        accountRepository.save(newAccount);
+        
+        
+        Account retreivedUser = accountRepository.findByUsername("usertesti2");
+        assertNotNull(retreivedUser);
+        assertEquals("salasana12345", retreivedUser.getPassword());
+        assertEquals("TESTIROOLI2", retreivedUser.getRole().getName());
+        
+        Role retreivedRole = roleRepository.findByName("TESTIROOLI2");
+        assertNotNull(retreivedRole);
+        assertEquals("usertesti2", retreivedRole.getUsers().get(0).getUsername());
     }
 }
