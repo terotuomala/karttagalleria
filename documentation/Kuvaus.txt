@@ -1,0 +1,7 @@
+Karttagalleria sovelluksen tarkoituksena on toimia paikkana, johon voidaan kerätä yrityksen sisäisessä käytössä olevia karttapalveluita ja kertoa niistä oleellisia tietoja.
+
+Karttagalleria sisältää tällä hetkellä seuraavat toiminnollisuudet:
+- Käyttäjätunnistautuminen
+- Roolipohjaiset käyttöoikeudet
+- Karttasovelluksien tietojen katselu / muokkaaminen / lisääminen / poistaminen
+- Käyttäjätunnuksien lisääminen / muokkaaminen / poistaminen
