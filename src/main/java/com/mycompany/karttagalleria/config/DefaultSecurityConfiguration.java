@@ -9,7 +9,6 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -23,9 +22,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class DefaultSecurityConfiguration extends WebSecurityConfigurerAdapter {
     
-    @Autowired
-    private UserDetailsService userDetailsService;
-    
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
@@ -33,9 +29,9 @@ public class DefaultSecurityConfiguration extends WebSecurityConfigurerAdapter {
         
         http.authorizeRequests()
                 .antMatchers("/h2-console/*").permitAll()
-                .antMatchers(HttpMethod.DELETE, "/gallery/*").access("hasRole('ADMIN')")
-                .antMatchers("/addMap").access("hasRole('ADMIN') or hasRole('PUBLISHER')")
-                .antMatchers("/addUser").access("hasRole('ADMIN')")
+                .antMatchers(HttpMethod.GET, "/map/*").authenticated()
+                .antMatchers("/map/*").access("hasRole('ADMIN') or hasRole('PUBLISHER')")
+                .antMatchers("/account/*").access("hasRole('ADMIN')")
                 .anyRequest().authenticated();
         http.formLogin()
                 .permitAll();

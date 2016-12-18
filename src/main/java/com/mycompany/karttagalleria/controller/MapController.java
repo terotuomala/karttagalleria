@@ -49,7 +49,7 @@ public class MapController {
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public String deleteMap(@PathVariable Long id) {
-        mapRepository.delete(id);
+        mapRepository.delete(id);   
         return "redirect:/gallery";
     }
     

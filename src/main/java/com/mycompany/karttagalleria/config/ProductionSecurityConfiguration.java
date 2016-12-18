@@ -29,9 +29,9 @@ public class ProductionSecurityConfiguration extends WebSecurityConfigurerAdapte
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers(HttpMethod.DELETE, "/gallery/*").access("hasRole('ADMIN')")
-                .antMatchers("/addMap").access("hasRole('ADMIN') or hasRole('PUBLISHER')")
-                .antMatchers("/addUser").access("hasRole('ADMIN')")
+                .antMatchers(HttpMethod.GET, "/map/*").authenticated()
+                .antMatchers("/map/*").access("hasRole('ADMIN') or hasRole('PUBLISHER')")
+                .antMatchers("/account/*").access("hasRole('ADMIN')")
                 .anyRequest().authenticated();
         http.formLogin()
                 .permitAll();
