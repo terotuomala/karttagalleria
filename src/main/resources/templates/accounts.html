@@ -23,12 +23,14 @@
                 <thead>
                     <tr>
                         <td><b>Käyttäjänimi:</b></td>
+                        <td><b>Rooli:</b></td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr th:each="account : ${accounts}"> 
                         <td th:text="${account.username}"></td>
-                        <td><a th:href="@{/account/edit/{accountId}(accountId=${account.id})}" class="btn btn-warning btn-sm" role="button"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td th:text="${account.role.name}"></td>
+                        <td><a th:href="@{/account/edit/{accountId}(accountId=${account.id})}" class="btn btn-warning btn-xs" role="button"><span class="glyphicon glyphicon-pencil"></span></a></td>
                     </tr>
                 </tbody>
             </table>
