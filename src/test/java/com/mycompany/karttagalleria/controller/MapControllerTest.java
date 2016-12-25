@@ -1,5 +1,12 @@
 package com.mycompany.karttagalleria.controller;
 
+import com.mycompany.karttagalleria.domain.Category;
+import com.mycompany.karttagalleria.domain.CoordinateSystem;
+import com.mycompany.karttagalleria.domain.Map;
+import com.mycompany.karttagalleria.repository.CategoryRepository;
+import com.mycompany.karttagalleria.repository.CoordinateSystemRepository;
+import com.mycompany.karttagalleria.repository.MapRepository;
+import com.mycompany.karttagalleria.service.MapService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,6 +33,18 @@ public class MapControllerTest {
 
     @Autowired
     private WebApplicationContext webAppContext;
+    
+    @Autowired
+    private MapRepository mapRepository;
+    
+    @Autowired
+    CategoryRepository categoryRepository;
+
+    @Autowired
+    CoordinateSystemRepository coordinateSystemRepository;
+    
+    @Autowired
+    MapService mapService;
 
     private MockMvc mockMvc;
 
@@ -41,7 +60,7 @@ public class MapControllerTest {
     }
 
     @Test
-    public void modelHasAttribute() throws Exception {
+    public void modelHasAttributeAdd() throws Exception {
         mockMvc.perform(get("/map/add"))
                 .andExpect(model().attributeExists("categories"))
                 .andExpect(model().attributeExists("coordinateSystems"));
@@ -57,6 +76,64 @@ public class MapControllerTest {
                 .param("url", "http://www.example.com"))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/gallery"));
+    }
+    
+    @Test
+    public void redirectAfterEdit() throws Exception {
+        Map map = new Map();
+        map.setTitle("Karttasovellustesti1");
+
+        Category cg = new Category();
+        cg.setName("Kategoriatesti1");
+
+        map.setCategory(cg);
+        map.setDescription("Kuvaustesti1");
+
+        CoordinateSystem cs = new CoordinateSystem();
+        cs.setName("Koordinaatistotesti1");
+
+        map.setCoordinateSystem(cs);
+        map.setUrl("http://www.example.com");
+
+        categoryRepository.save(cg);
+        coordinateSystemRepository.save(cs);
+        mapService.saveMap(map);
+        
+        mockMvc.perform(post("/map/edit/" + map.getId())
+                .param("title", "Karttasovellustesti3")
+                .param("category", "2")
+                .param("description", "Kuvaustesti3")
+                .param("coordinateSystem", "2")
+                .param("url", "http://www.example.com"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/gallery"));
+    }
+    
+    @Test
+    public void modelHasAttributeEdit() throws Exception {
+        Map map = new Map();
+        map.setTitle("Karttasovellustesti4");
+
+        Category cg = new Category();
+        cg.setName("Kategoriatesti4");
+
+        map.setCategory(cg);
+        map.setDescription("Kuvaustesti4");
+
+        CoordinateSystem cs = new CoordinateSystem();
+        cs.setName("Koordinaatistotesti4");
+
+        map.setCoordinateSystem(cs);
+        map.setUrl("http://www.example.com");
+
+        categoryRepository.save(cg);
+        coordinateSystemRepository.save(cs);
+        mapService.saveMap(map);
+        
+        mockMvc.perform(get("/map/edit/" + map.getId()))
+//                .andExpect(model().attributeExists("map"))
+                .andExpect(model().attributeExists("categories"))
+                .andExpect(model().attributeExists("coordinateSystems"));
     }
     
 }
