@@ -61,7 +61,7 @@ public class MapController {
     }
     
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String addMap(@Valid @ModelAttribute Map map, BindingResult bindingResult, Model model) {
+    public String addMap(@Valid Map map, BindingResult bindingResult, Model model) {
         
         if (bindingResult.hasErrors()) {
             model.addAttribute("categories", categoryRepository.findAll());
