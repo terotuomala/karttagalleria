@@ -83,7 +83,7 @@ public class MapController {
     }
     
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
-    public String updateMap(@Valid @ModelAttribute Map map, @PathVariable Long id, BindingResult bindingResult, Model model) {
+    public String updateMap(@Valid Map map, @PathVariable Long id, BindingResult bindingResult, Model model) {
         
         if (bindingResult.hasErrors()) {
             model.addAttribute("categories", categoryRepository.findAll());

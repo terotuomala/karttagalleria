@@ -36,7 +36,7 @@ public class AccountController {
         return new Account();
     }
     
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
     public String deleteAccount(@PathVariable Long id) {
         accountRepository.delete(id);
         return "redirect:/accounts";

@@ -31,6 +31,7 @@
                         <td th:text="${account.username}"></td>
                         <td th:text="${account.role.name}"></td>
                         <td><a th:href="@{/account/edit/{accountId}(accountId=${account.id})}" class="btn btn-warning btn-xs" role="button"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><form th:action="@{/account/delete/{accountId}(accountId=${account.id})}" th:method="DELETE"><button type="submit" th:field="${account.id}" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></button></form></td>
                     </tr>
                 </tbody>
             </table>
