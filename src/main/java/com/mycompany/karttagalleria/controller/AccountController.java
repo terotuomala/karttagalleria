@@ -39,7 +39,7 @@ public class AccountController {
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
     public String deleteAccount(@PathVariable Long id) {
         accountRepository.delete(id);
-        return "redirect:/accounts";
+        return "redirect:/account/list";
     }
     
     
@@ -64,7 +64,7 @@ public class AccountController {
             return "addAccount";
         }
         accountService.saveAccount(account);
-        return "redirect:/gallery";
+        return "redirect:/account/list";
     }
     
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
