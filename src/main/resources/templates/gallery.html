@@ -27,8 +27,8 @@
                     <a th:href="@{map/{mapId}(mapId=${map.id})}"><h3 th:text="${map.title}">title</h3></a>
                     <p th:text="${map.description}"></p>
 
-                    <div class="form-group" sec:authorize="hasRole('ADMIN')">
-                        <form th:action="@{/map/{mapId}(mapId=${map.id})}" th:method="DELETE">
+                    <div class="form-group" sec:authorize="hasRole('ADMIN') or hasRole('ROLE_PUBLISHER')">
+                        <form th:action="@{/map/delete/{mapId}(mapId=${map.id})}" th:method="DELETE">
                             <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
                             <a th:href="@{map/edit/{mapId}(mapId=${map.id})}" class="btn btn-warning" role="button"><span class="glyphicon glyphicon-pencil"></span></a>
                         </form>
