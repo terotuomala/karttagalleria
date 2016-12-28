@@ -15,9 +15,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
- *
+ * ProductionSecurityConfiguration.java - a class for 'production' profile security configuration 
  * @author Tero Tuomala
+ * @version 1.0
  */
+
 @Profile("production")
 @Configuration
 @EnableWebSecurity

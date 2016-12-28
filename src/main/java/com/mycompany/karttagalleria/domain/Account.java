@@ -9,8 +9,8 @@ import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 /**
- *
  * @author Tero Tuomala
+ * @version 1.0
  */
 
 @Entity
@@ -70,12 +70,5 @@ public class Account extends AbstractPersistable<Long>{
     public void setRole(Role role) {
         this.role = role;
     }
-
-    /**
-     * @return the roles
-     */
-    
-    
   
-    
 }

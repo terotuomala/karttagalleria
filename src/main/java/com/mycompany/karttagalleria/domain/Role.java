@@ -10,9 +10,10 @@ import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 /**
- *
  * @author Tero Tuomala
+ * @version 1.0
  */
+
 @Entity
 public class Role extends AbstractPersistable<Long> {
     
@@ -49,7 +50,7 @@ public class Role extends AbstractPersistable<Long> {
     }
 
     /**
-     * @param users the users to set
+     * @param user the users to set
      */
     public void setUsers(Account user) {
         this.users.add(user);

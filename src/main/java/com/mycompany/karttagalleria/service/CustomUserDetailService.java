@@ -12,8 +12,9 @@ import org.springframework.stereotype.Service;
 import com.mycompany.karttagalleria.repository.AccountRepository;
 
 /**
- *
+ * CustomUserDetailService.java - a class for retrieving user from database
  * @author Tero Tuomala
+ * @version 1.0
  */
 
 @Service
@@ -23,6 +24,7 @@ public class CustomUserDetailService implements UserDetailsService {
     @Autowired
     AccountRepository accountRepository;
     
+    // Searches Account object based on 'username', if found creates new 'Account' domain object from it
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Account account = accountRepository.findByUsername(username);

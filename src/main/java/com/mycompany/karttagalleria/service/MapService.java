@@ -11,8 +11,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- *
+ * MapService.java - a class for saving and updating 'Map' domain objects
  * @author Tero Tuomala
+ * @version 1.0
  */
 
 @Service

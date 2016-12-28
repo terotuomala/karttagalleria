@@ -4,8 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- *
  * @author Tero Tuomala
+ * @version 1.0
  */
 @SpringBootApplication
 public class KarttagalleriaApplication {

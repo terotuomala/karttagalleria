@@ -13,8 +13,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
- *
+ * DefaultSecurityConfiguration.java - a class for 'default' profile security configuration 
  * @author Tero Tuomala
+ * @version 1.0
  */
 
 @Profile("default")

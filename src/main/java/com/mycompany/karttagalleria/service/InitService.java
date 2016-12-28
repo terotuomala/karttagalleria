@@ -17,8 +17,9 @@ import com.mycompany.karttagalleria.repository.AccountRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
- *
+ * InitService.java - a class for creating new 'Account', 'Role', 'Map', 'Category' and 'CoordinateSystem' domain objects for local testing
  * @author Tero Tuomala
+ * @version 1.0
  */
 
 @Profile("default")

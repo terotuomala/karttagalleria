@@ -25,6 +25,8 @@ import org.springframework.web.context.WebApplicationContext;
 /**
  *
  * @author Tero Tuomala
+ * @version 1.0
+ * @since 27.12.2016
  */
 
 @RunWith(SpringRunner.class)

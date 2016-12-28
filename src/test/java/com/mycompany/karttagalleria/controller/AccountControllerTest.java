@@ -22,7 +22,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 /**
  *
  * @author Tero Tuomala
+ * @version 1.0
+ * @since 27.12.2016
  */
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class AccountControllerTest {

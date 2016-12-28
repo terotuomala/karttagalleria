@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
- *
  * @author Tero Tuomala
+ * @version 1.0
  */
 
 @Controller
@@ -40,19 +40,21 @@ public class MapController {
         return new Map();
     }
     
+    // Gets map with given id and adds it to a model
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public String getMap(@PathVariable Long id, Model model) {
         model.addAttribute("map", mapRepository.findOne(id));
         return "map";
     }
     
+    // Deletes map with given id
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
     public String deleteMap(@PathVariable Long id) {
         mapRepository.delete(id);   
         return "redirect:/gallery";
     }
     
-    
+    // Lists all categories and coordinateSystems and adds them to a model
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String view(Model model) {
         model.addAttribute("categories", categoryRepository.findAll());
@@ -60,6 +62,7 @@ public class MapController {
         return "addMap";
     }
     
+    // Sends new valid map to 'saveMap' method
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String addMap(@Valid Map map, BindingResult bindingResult, Model model) {
         
@@ -73,6 +76,7 @@ public class MapController {
         return "redirect:/gallery";
     }
     
+    // Gets map with given id and adds it category and coordinateSystem to a model
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     public String editMap(@PathVariable Long id, Model model) {
         model.addAttribute("map", mapRepository.findOne(id));
@@ -81,6 +85,7 @@ public class MapController {
         return "editMap";
     }
     
+    // Sends current map and edited map to 'updateMap' method
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
     public String updateMap(@Valid Map map, @PathVariable Long id, BindingResult bindingResult, Model model) {
         

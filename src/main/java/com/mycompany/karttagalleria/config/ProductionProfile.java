@@ -8,8 +8,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 /**
- *
+ * ProductionProfile.java - a class for 'production' profile for Heroku Postgres add-on connection
  * @author Tero Tuomala
+ * @version 1.0
  */
 
 @Configuration

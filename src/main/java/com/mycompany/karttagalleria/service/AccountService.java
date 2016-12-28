@@ -10,8 +10,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- *
+ * AccountService.java - a class for saving and updating 'Account' domain objects
  * @author Tero Tuomala
+ * @version 1.0
  */
 
 @Service

@@ -2,7 +2,6 @@ package com.mycompany.karttagalleria.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,8 +10,8 @@ import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 /**
- *
  * @author Tero Tuomala
+ * @version 1.0
  */
 
 @Entity
@@ -52,7 +51,7 @@ public class Category extends AbstractPersistable<Long> {
     }
 
     /**
-     * @param maps the maps to set
+     * @param map the maps to set
      */
     public void setMaps(Map map) {
         this.maps.add(map);
