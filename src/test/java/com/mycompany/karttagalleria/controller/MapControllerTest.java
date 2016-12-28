@@ -23,10 +23,9 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 /**
- *
+ * MapControllerTest.java - a class for testing MapController
  * @author Tero Tuomala
  * @version 1.0
- * @since 27.12.2016
  */
 
 @RunWith(SpringRunner.class)

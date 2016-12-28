@@ -14,10 +14,9 @@ import com.mycompany.karttagalleria.repository.AccountRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
- *
+ * AccountServiceTest.java - a class for testing AccountService
  * @author Tero Tuomala
  * @version 1.0
- * @since 27.12.2016
  */
 
 @RunWith(SpringRunner.class)

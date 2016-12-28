@@ -15,10 +15,9 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 /**
- *
+ * GalleryControllerTest.java - a class for testing GalleryController
  * @author Tero Tuomala
  * @version 1.0
- * @since 27.12.2016
  */
 
 @RunWith(SpringRunner.class)

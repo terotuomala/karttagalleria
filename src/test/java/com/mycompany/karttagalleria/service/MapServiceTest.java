@@ -15,10 +15,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
- *
+ * MapServiceTest.java - a class for testing MapService
  * @author Tero Tuomala
  * @version 1.0
- * @since 27.12.2016
  */
 
 @RunWith(SpringRunner.class)

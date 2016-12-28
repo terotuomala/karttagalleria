@@ -20,10 +20,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 
 /**
- *
+ * AccountControllerTest.java - a class for testing AccountController
  * @author Tero Tuomala
  * @version 1.0
- * @since 27.12.2016
  */
 
 @RunWith(SpringRunner.class)
