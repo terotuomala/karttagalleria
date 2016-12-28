@@ -71,7 +71,7 @@ public class AccountControllerTest {
                 .param("password", "salasana1234")
                 .param("role", "1"))
                 .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/gallery"));
+                .andExpect(redirectedUrl("/account/list"));
     }
     
     @Test
