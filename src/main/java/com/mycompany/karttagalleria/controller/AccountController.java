@@ -60,7 +60,7 @@ public class AccountController {
     
     // Sends new valid account to 'saveAccount' method
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String addAccount(@Valid Account account, BindingResult bindingResult, Model model) {
+    public String addAccount(@Valid @ModelAttribute Account account, BindingResult bindingResult, Model model) {
         
         if (bindingResult.hasErrors()) {
             model.addAttribute("roles", roleRepository.findAll());
@@ -80,7 +80,7 @@ public class AccountController {
     
     // Sends current account and edited account to 'updateAccount' method
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
-    public String updateAccount(@Valid Account account, @PathVariable Long id, BindingResult bindingResult, Model model) {
+    public String updateAccount(@Valid @ModelAttribute Account account, @PathVariable Long id, BindingResult bindingResult, Model model) {
         
         if (bindingResult.hasErrors()) {
             model.addAttribute("roles", roleRepository.findAll());

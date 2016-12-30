@@ -7,6 +7,7 @@ import com.mycompany.karttagalleria.repository.MapRepository;
 import com.mycompany.karttagalleria.service.MapService;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -41,6 +42,7 @@ public class MapController {
     }
     
     // Gets map with given id and adds it to a model
+    @Secured({"ROLE_ADMIN", "ROLE_PUBLISHER", "ROLE_USER"})
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public String getMap(@PathVariable Long id, Model model) {
         model.addAttribute("map", mapRepository.findOne(id));
@@ -48,6 +50,7 @@ public class MapController {
     }
     
     // Deletes map with given id
+    @Secured({"ROLE_ADMIN", "ROLE_PUBLISHER"})
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
     public String deleteMap(@PathVariable Long id) {
         mapRepository.delete(id);   
@@ -55,6 +58,7 @@ public class MapController {
     }
     
     // Lists all categories and coordinateSystems and adds them to a model
+    @Secured({"ROLE_ADMIN", "ROLE_PUBLISHER"})
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String view(Model model) {
         model.addAttribute("categories", categoryRepository.findAll());
@@ -63,8 +67,9 @@ public class MapController {
     }
     
     // Sends new valid map to 'saveMap' method
+    @Secured({"ROLE_ADMIN", "ROLE_PUBLISHER"})
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String addMap(@Valid Map map, BindingResult bindingResult, Model model) {
+    public String addMap(@Valid @ModelAttribute Map map, BindingResult bindingResult, Model model) {
         
         if (bindingResult.hasErrors()) {
             model.addAttribute("categories", categoryRepository.findAll());
@@ -77,6 +82,7 @@ public class MapController {
     }
     
     // Gets map with given id and adds it category and coordinateSystem to a model
+    @Secured({"ROLE_ADMIN", "ROLE_PUBLISHER"})
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     public String editMap(@PathVariable Long id, Model model) {
         model.addAttribute("map", mapRepository.findOne(id));
@@ -86,8 +92,9 @@ public class MapController {
     }
     
     // Sends current map and edited map to 'updateMap' method
+    @Secured({"ROLE_ADMIN", "ROLE_PUBLISHER"})
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
-    public String updateMap(@Valid Map map, @PathVariable Long id, BindingResult bindingResult, Model model) {
+    public String updateMap(@Valid @ModelAttribute Map map, @PathVariable Long id, BindingResult bindingResult, Model model) {
         
         if (bindingResult.hasErrors()) {
             model.addAttribute("categories", categoryRepository.findAll());
