@@ -6,7 +6,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -22,7 +21,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Profile("default")
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(securedEnabled = true, proxyTargetClass = true)
 public class DefaultSecurityConfiguration extends WebSecurityConfigurerAdapter {
     
     @Override
@@ -32,7 +30,7 @@ public class DefaultSecurityConfiguration extends WebSecurityConfigurerAdapter {
         
         http.authorizeRequests()
                 .antMatchers("/h2-console/*").permitAll()
-                .antMatchers(HttpMethod.GET, "/map/{id:[\\d+]}").access("hasRole('ADMIN') or hasRole('PUBLISHER') or hasRole('USER')")
+                .antMatchers(HttpMethod.GET, "/map/{id:[\\d]}").access("hasRole('ADMIN') or hasRole('PUBLISHER') or hasRole('USER')")
                 .antMatchers("/map/*").access("hasRole('ADMIN') or hasRole('PUBLISHER')")
                 .antMatchers("/account/*").access("hasRole('ADMIN')")
                 .anyRequest().authenticated();
