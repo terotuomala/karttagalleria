@@ -38,6 +38,7 @@ public class DefaultSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated();
         http.formLogin()
                 .permitAll();
+        http.exceptionHandling().accessDeniedPage("/403");
     }
     
     @Autowired

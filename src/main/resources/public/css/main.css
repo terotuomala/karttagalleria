@@ -2,6 +2,15 @@ body {
     padding-top: 70px;
     font-family: 'Open Sans', sans-serif;
 }
+
+#error_page {
+    text-align: center;
+    font-size: 60px;
+}
+
+#error_page_ban {
+    color: red;
+}
     
 /*Custom Thymeleaf styles*/
 .form-field-error {
