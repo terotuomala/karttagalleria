@@ -38,7 +38,6 @@ public class AccountController {
     }
     
     // Deletes account with given id
-    @Secured("ROLE_ADMIN")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
     public String deleteAccount(@PathVariable Long id) {
         accountRepository.delete(id);
@@ -46,7 +45,6 @@ public class AccountController {
     }
     
     // Lists all accounts and their roles and adds them to a model
-    @Secured("ROLE_ADMIN")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String listAccounts(Model model) {
         model.addAttribute("accounts", accountRepository.findAll());
@@ -55,7 +53,6 @@ public class AccountController {
     }
     
     // Lists all roles and adds them to a model
-    @Secured("ROLE_ADMIN")
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String getAccount(Model model) {
         model.addAttribute("roles", roleRepository.findAll());
@@ -63,7 +60,6 @@ public class AccountController {
     }
     
     // Sends new valid account to 'saveAccount' method
-    @Secured("ROLE_ADMIN")
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String addAccount(@Valid @ModelAttribute Account account, BindingResult bindingResult, Model model) {
         
@@ -76,7 +72,6 @@ public class AccountController {
     }
     
     // Gets account with given id and adds it roles to a model
-    @Secured("ROLE_ADMIN")
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     public String editAccount(@PathVariable Long id, Model model) {
         model.addAttribute("account", accountRepository.findOne(id));
@@ -85,7 +80,6 @@ public class AccountController {
     }
     
     // Sends current account and edited account to 'updateAccount' method
-    @Secured("ROLE_ADMIN")
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
     public String updateAccount(@Valid @ModelAttribute Account account, @PathVariable Long id, BindingResult bindingResult, Model model) {
         
