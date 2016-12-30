@@ -33,12 +33,13 @@ public class ProductionSecurityConfiguration extends WebSecurityConfigurerAdapte
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/map/*").access("hasRole('ADMIN') or hasRole('PUBLISHER') or hasRole('USER')")
+                .antMatchers(HttpMethod.GET, "/map/{id:[\\d+]}").access("hasRole('ADMIN') or hasRole('PUBLISHER') or hasRole('USER')")
                 .antMatchers("/map/*").access("hasRole('ADMIN') or hasRole('PUBLISHER')")
                 .antMatchers("/account/*").access("hasRole('ADMIN')")
                 .anyRequest().authenticated();
         http.formLogin()
                 .permitAll();
+        http.exceptionHandling().accessDeniedPage("/403");
     }
 
     @Autowired
