@@ -30,7 +30,7 @@ public class DefaultSecurityConfiguration extends WebSecurityConfigurerAdapter {
         
         http.authorizeRequests()
                 .antMatchers("/h2-console/*").permitAll()
-                .antMatchers(HttpMethod.GET, "/map/{id:[\\d]}").access("hasRole('ADMIN') or hasRole('PUBLISHER') or hasRole('USER')")
+                .antMatchers(HttpMethod.GET, "/map/{id:\\d+}").access("hasRole('ADMIN') or hasRole('PUBLISHER') or hasRole('USER')")
                 .antMatchers("/map/*").access("hasRole('ADMIN') or hasRole('PUBLISHER')")
                 .antMatchers("/account/*").access("hasRole('ADMIN')")
                 .anyRequest().authenticated();
